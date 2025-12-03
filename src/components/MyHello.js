@@ -1,10 +1,10 @@
-export default function MyHello(props) {
+export default function MyHello({ person, func }) {
     return (
         <div>
-            こんにちは！{props.person.name}さん（{props.person.age}）
+            こんにちは！{person.name}さん（{person.age}）
             <div>
                 <input type="button"
-                    onClick={() => { props.func(props.person.name) }}
+                    onClick={() => { func(person.name) }}
                     value="click me!" />
             </div>
         </div>
