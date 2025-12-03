@@ -11,7 +11,7 @@ const personalInfo = {
 }
 root.render(
   <React.StrictMode>
-    <MyHello person={personalInfo} />
+    <MyHello person={personalInfo} func={(args) => { alert(args) }} />
   </React.StrictMode>
 );
 
