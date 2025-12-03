@@ -1,7 +1,7 @@
 export default function MyHello(props) {
     return (
         <div>
-            こんにちは！{props.myName}さん
+            こんにちは！{props.person.name}さん（{props.person.age}）
         </div>
     );
 }
