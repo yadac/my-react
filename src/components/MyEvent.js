@@ -1,0 +1,21 @@
+export default function MyEvent({ type }) {
+    const current = () => {
+        const d = new Date();
+        {
+            switch (type) {
+                case 'date':
+                    console.log(d.toLocaleDateString());
+                    break;
+                case 'time':
+                    console.log(d.toLocaleTimeString());
+                    break;
+                default:
+                    console.log(d.toLocaleString());
+                    break;
+            }
+        }
+    }
+    return (
+        <button onClick={current}>click me</button>
+    )
+}
