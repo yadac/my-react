@@ -14,7 +14,7 @@ export default function Booklist() {
                                 {elem.title}({elem.price}円)
                             </a>
                         </dt>
-                        <dd>{elem.summary}</dd>
+                        <dd className="font-bold text-blue-600">{elem.summary}</dd>
                     </React.Fragment>
                 ))
             }
