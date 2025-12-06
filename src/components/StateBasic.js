@@ -9,6 +9,7 @@ export default function StateBasic({ init }) {
         handleClick();
         handleClick2();
     }
+    console.log('コンポーネントが更新されました')
     return (
         <div>
             <button onClick={handleClickAll}>カウント</button>
