@@ -8,8 +8,9 @@ export default function StateCounter({ updateTotal }) {
     return (
         <div>
             <button
-                className="m-4 p-10 bg-blue-100 w-1/4 content-center"
-                onClick={clickHandler}>{count}</button>
+                className="m-4 p-10 bg-blue-100 w-1/4 content-center hover:bg-red-300"
+                onClick={clickHandler}
+            >{count}</button>
         </div>
     )
 }
