@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import StateBasic from './components/StateBasic';
+import StateParent from './components/StateParent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <StateBasic init={0} />
+    <StateParent />
   </React.StrictMode>
 );
 
