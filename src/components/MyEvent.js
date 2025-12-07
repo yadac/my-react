@@ -1,5 +1,7 @@
-export default function MyEvent({ type }) {
-    const current = () => {
+import React from "react";
+
+export default function MyEvent() {
+    const current = (e, type) => {
         const d = new Date();
         {
             switch (type) {
@@ -15,7 +17,14 @@ export default function MyEvent({ type }) {
             }
         }
     }
+    const current2 = e => {
+        console.log(e.target.dataset.type);
+    }
+
     return (
-        <button onClick={current}>click me</button>
+        <React.Fragment>
+            <button onClick={e => { current(e, 'date') }} className="border-4 border-solid p-2 m-10">click me</button>
+            <button data-type="time" onClick={current2} className="border-4 border-solid p-2 m-10">click me 2</button>
+        </React.Fragment>
     )
 }

@@ -2,15 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import StateParent from './components/StateParent';
-import ScreenPoint from './components/ScreenPoint';
+import MyEvent from './components/MyEvent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ScreenPoint>
-      <StateParent />
-    </ScreenPoint>
+    <MyEvent />
   </React.StrictMode>
 );
 
