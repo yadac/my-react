@@ -1,12 +1,7 @@
-export default function MyHello({ person, func }) {
+export default function MyHello({ myName2 }) {
     return (
         <div>
-            こんにちは！{person.name}さん（{person.age}）
-            <div>
-                <input type="button"
-                    onClick={() => { func(person.name) }}
-                    value="click me!" />
-            </div>
+            こんにちは！{myName2}さん
         </div>
     );
 }
