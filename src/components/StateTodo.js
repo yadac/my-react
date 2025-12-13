@@ -9,8 +9,7 @@ export default function StateTodo() {
         setTitle(e.target.value);
     }
 
-    const addTodo = () => {
-        console.log('Todoを追加します');
+    const handleAdd = () => {
         setTodo([
             ...todo,
             {
@@ -21,26 +20,24 @@ export default function StateTodo() {
             }
         ]);
     }
-    const sortTodo = () => {
+    const handleSort = () => {
         console.log('Todoをソートします');
     }
 
-    const updateTodo = (e) => {
-        console.log('Todoを更新します');
-        todo.map(t => {
-            if (e.key === t.id) {
-                setTodo(
-                    [
-                        ...todo,
-                        { isDone: true }
-                    ]);
+    const handleDone = (e) => {
+        setTodo(todo.map(t => {
+            if (t.id === Number(e.target.dataset.id)) {
+                return {
+                    ...t,
+                    isDone: !t.isDone
+                }
             } else {
-
+                return t;
             }
-        })
+        }));
     }
 
-    const removeTodo = () => {
+    const handleRemove = () => {
         console.log('Todoを削除します');
     }
 
@@ -51,18 +48,18 @@ export default function StateTodo() {
                     <label>やること：</label>
                     <input type="text" id="title" name="title"
                         className="border" onChange={handleTitle} />
-                    <button type="button" onClick={addTodo} className="border">追加</button>
-                    <button type="button" onClick={sortTodo} className="border">ソート</button>
+                    <button type="button" onClick={handleAdd} className="border">追加</button>
+                    <button type="button" onClick={handleSort} className="border">ソート</button>
                 </div>
                 <div>
                     <ul>
                         {todo.map(t => (
-                            <li key={t.id}>
+                            <li key={t.id} className={t.isDone ? "line-through" : ""}>
                                 {t.title}
                                 <button type="button" className="border p-1"
-                                    onClick={updateTodo}>済</button>
+                                    onClick={handleDone} data-id={t.id}>済</button>
                                 <button type="button" className="border p-1"
-                                    onClick={removeTodo}>削除</button>
+                                    onClick={handleRemove}>削除</button>
                             </li>
                         ))}
                     </ul>
