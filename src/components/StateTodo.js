@@ -37,8 +37,10 @@ export default function StateTodo() {
         }));
     }
 
-    const handleRemove = () => {
-        console.log('Todoを削除します');
+    const handleRemove = (e) => {
+        setTodo(
+            todo.filter((t) => { return t.id !== Number(e.target.dataset.id) })
+        );
     }
 
     return (
@@ -59,7 +61,7 @@ export default function StateTodo() {
                                 <button type="button" className="border p-1"
                                     onClick={handleDone} data-id={t.id}>済</button>
                                 <button type="button" className="border p-1"
-                                    onClick={handleRemove}>削除</button>
+                                    onClick={handleRemove} data-id={t.id}>削除</button>
                             </li>
                         ))}
                     </ul>
