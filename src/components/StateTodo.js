@@ -4,28 +4,43 @@ let maxId = 0;
 export default function StateTodo() {
     const [todo, setTodo] = useState([]);
     const [title, setTitle] = useState('');
+    const [desc, setDesc] = useState(false);
 
     const handleTitle = (e) => {
         setTitle(e.target.value);
     }
 
     const handleAdd = () => {
-        setTodo([
+        setTodo(todo => [
             ...todo,
             {
                 id: ++maxId,
                 title: title,
                 created: new Date(),
                 isDone: false
-            }
+            },
         ]);
     }
+
     const handleSort = () => {
-        console.log('Todoをソートします');
+
+        setDesc(prevDesc => {
+            const newDesc = !desc;
+            setTodo(prevTodo => {
+                const copied = [...todo];
+                copied.sort((a, b) => {
+                    const timeA = a.created.getTime();
+                    const timeB = b.created.getTime();
+                    return newDesc ? timeB - timeA : timeA - timeB;
+                });
+                return copied;
+            })
+            return newDesc;
+        })
     }
 
     const handleDone = (e) => {
-        setTodo(todo.map(t => {
+        setTodo(prevTodo => prevTodo.map(t => {
             if (t.id === Number(e.target.dataset.id)) {
                 return {
                     ...t,
@@ -51,13 +66,15 @@ export default function StateTodo() {
                     <input type="text" id="title" name="title"
                         className="border" onChange={handleTitle} />
                     <button type="button" onClick={handleAdd} className="border">追加</button>
-                    <button type="button" onClick={handleSort} className="border">ソート</button>
+                    <button type="button" onClick={handleSort} className="border">
+                        ソート{desc ? '↑' : '↓'}
+                    </button>
                 </div>
                 <div>
                     <ul>
                         {todo.map(t => (
                             <li key={t.id} className={t.isDone ? "line-through" : ""}>
-                                {t.title}
+                                {t.title}{t.created.toString()}
                                 <button type="button" className="border p-1"
                                     onClick={handleDone} data-id={t.id}>済</button>
                                 <button type="button" className="border p-1"
