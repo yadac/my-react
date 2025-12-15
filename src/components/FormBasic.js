@@ -7,11 +7,18 @@ export default function FormBasic() {
         memo: ''
     }
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors, isDirty, isValid, isSubmitting } } = useForm({
         defaultValues,
     })
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve();
+                console.log(data);
+            }, 4000)
+        });
+    };
     const onError = error => console.error(error);
 
     return (
@@ -78,7 +85,8 @@ export default function FormBasic() {
             </div>
 
             <div>
-                <button type="submit">送信</button>
+                <button type="submit" disabled={!isDirty || !isValid || isSubmitting}>送信</button>
+                {isSubmitting && <div>... 送信中 ...</div>}
             </div>
 
         </form >
