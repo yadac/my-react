@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react'
+import SpinerBasic from './SpinnerBasic';
 
 const sleep = (ms) => {
     return new Promise((resolve, reject) => {
@@ -13,7 +14,7 @@ const sleep = (ms) => {
     )
 };
 
-const LazyButtonActual = lazy(() => sleep(20000)
+const LazyButtonActual = lazy(() => sleep(2000)
     .then(() => import('./LazyButton'))
     .catch((err) => {
         console.error(err);
@@ -27,7 +28,7 @@ const LazyButtonActual = lazy(() => sleep(20000)
 
 export default function LazyBasic() {
     return (
-        <Suspense fallback={<p>Now Loading...</p>}>
+        <Suspense fallback={<SpinerBasic />}>
             <LazyButtonActual />
         </Suspense>
     )
