@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Weather_API_KEY } from '../config/env';
 
-const city = 'Sapporo2';
+const city = 'Sapporo';
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${Weather_API_KEY}`;
 const sleep = delay => new Promise(resolve => setTimeout(resolve, delay))
 
@@ -14,7 +14,7 @@ const fetchWeather = async () => {
     throw new Error(res.statusText);
 }
 
-export default function QueryBasic() {
+export default function QuerySuspense() {
 
     const { data, isLoading, isError, error, dataUpdatedAt } = useQuery({
         queryKey: ['weather'],
@@ -22,12 +22,6 @@ export default function QueryBasic() {
         refetchInterval: 60_000
     });
 
-    if (isLoading) {
-        return (<p>Loading...</p>);
-    }
-    if (isError) {
-        return (<p>Error:{error}</p>);
-    }
     return (
         <div className='h-screen flex flex-col items-center justify-center'>
             <figure className="flex flex-col items-center">
