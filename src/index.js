@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import ErrorEventRoot from './components/ErrorEventRoot';
+import MaterialBasic from './components/MaterialBasic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ErrorEventRoot />
+    <MaterialBasic />
   </React.StrictMode>
 );
 
