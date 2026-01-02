@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import ProfilerBasic from './components/ProfilerBasic';
+import PortalBasic from './components/PortalBasic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ProfilerBasic />
+    <div id="dialog"></div>
+    <PortalBasic />
   </React.StrictMode>
 );
 
